@@ -1,0 +1,14 @@
+[INFO] 23-12-2024 15:51:43 [main] [Tests.TC02_LandingTest.setup(TC02_LandingTest.java:26)] - Chrome driver is opened
+[INFO] 23-12-2024 15:51:43 [main] [Tests.TC02_LandingTest.setup(TC02_LandingTest.java:28)] - Page is redirected to the url
+[INFO] 23-12-2024 15:51:44 [main] [Tests.TC02_LandingTest.setup(TC02_LandingTest.java:26)] - Chrome driver is opened
+[INFO] 23-12-2024 15:51:45 [main] [Tests.TC02_LandingTest.setup(TC02_LandingTest.java:28)] - Page is redirected to the url
+[INFO] 23-12-2024 15:51:45 [main] [Pages.P02_LandingPage.addRandomProducts(P02_LandingPage.java:65)] - random number 4
+[INFO] 23-12-2024 15:51:45 [main] [Pages.P02_LandingPage.addRandomProducts(P02_LandingPage.java:65)] - random number 5
+[INFO] 23-12-2024 15:51:45 [main] [Pages.P02_LandingPage.addRandomProducts(P02_LandingPage.java:65)] - random number 6
+[INFO] 23-12-2024 15:51:45 [main] [Pages.P02_LandingPage.getNumberOfProductsOnCartIcon(P02_LandingPage.java:54)] - (LandingPage) number of products on cart icon 3
+[INFO] 23-12-2024 15:51:45 [main] [Pages.P02_LandingPage.getNumberOfSelectedProducts(P02_LandingPage.java:42)] - (LandingPage) Selected products 3
+[INFO] 23-12-2024 15:51:46 [main] [Tests.TC02_LandingTest.setup(TC02_LandingTest.java:26)] - Chrome driver is opened
+[INFO] 23-12-2024 15:51:47 [main] [Tests.TC02_LandingTest.setup(TC02_LandingTest.java:28)] - Page is redirected to the url
+[INFO] 23-12-2024 15:51:47 [main] [Pages.P02_LandingPage.addAllProductsToCart(P02_LandingPage.java:30)] - (LandingPage) number of all products 6
+[INFO] 23-12-2024 15:51:47 [main] [Pages.P02_LandingPage.getNumberOfProductsOnCartIcon(P02_LandingPage.java:54)] - (LandingPage) number of products on cart icon 6
+[INFO] 23-12-2024 15:51:47 [main] [Pages.P02_LandingPage.getNumberOfSelectedProducts(P02_LandingPage.java:42)] - (LandingPage) Selected products 6

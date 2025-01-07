@@ -1,0 +1,4 @@
+[INFO] 23-12-2024 15:42:59 [main] [Tests.TC02_LandingTest.setup(TC02_LandingTest.java:31)] - Chrome driver is opened
+[INFO] 23-12-2024 15:42:59 [main] [Tests.TC02_LandingTest.setup(TC02_LandingTest.java:33)] - Page is redirected to the url
+[ERROR] 23-12-2024 15:43:00 [main] [Tests.TC02_LandingTest.ClickOnCartIcon(TC02_LandingTest.java:69)] - expected URL https://www.saucedemo.com/cart.html
+[ERROR] 23-12-2024 15:43:00 [main] [Tests.TC02_LandingTest.ClickOnCartIcon(TC02_LandingTest.java:70)] - get Current Url https://www.saucedemo.com/cart.html
