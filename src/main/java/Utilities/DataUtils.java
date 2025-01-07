@@ -27,6 +27,6 @@ public class DataUtils {
     public static String getPropertyValue(String fileName, String key) throws IOException {
         Properties properties = new Properties();
         properties.load(new FileInputStream(Test_Data_path + fileName + ".properties"));
-        return properties.getProperty(keyy);
+        return properties.getProperty(key);
     }
 }
