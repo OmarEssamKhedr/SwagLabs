@@ -21,7 +21,7 @@ import static Utilities.DataUtils.getPropertyValue;
 
 public class TC01_LoginTest {
 
-    private final String Username1 = DataUtils.getJsonData("validlogin", "username1");
+    private final String Username1 = DataUtils.getJsonData("validlogin", "normalUsername");
     private final String Username2 = DataUtils.getJsonData("validlogin", "username2");
     private final String Username3 = DataUtils.getJsonData("validlogin", "username3");
     private final String Username4 = DataUtils.getJsonData("validlogin", "username4");

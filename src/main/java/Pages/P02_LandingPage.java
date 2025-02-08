@@ -13,12 +13,14 @@ import java.util.Set;
 import static Utilities.Utility.generalWait;
 
 public class P02_LandingPage {
+    static float totalPrice = 0;
     private static List<WebElement> allProducts;
     private static List<WebElement> selectedProducts;
     private final By addToCartButtonForAllProducts = By.xpath("//button[@class]");
     private final By numberOfProductsOnCartIcon = By.xpath("/html/body/div/div/div/div[1]/div[1]/div[3]/a/span");
     private final By numberOfSelectedProducts = By.xpath("//button[.='Remove']");
     private final By cartIcon = By.xpath("/html/body/div/div/div/div[1]/div[1]/div[3]/a");
+    private final By pricesOfSelectedProductsLocator = By.xpath("(//button[.=\"Remove\"] //preceding-sibling::div[@class='inventory_item_price'])");
     private final WebDriver driver;
 
     public P02_LandingPage(WebDriver driver) {
@@ -90,6 +92,22 @@ public class P02_LandingPage {
             return false;
         }
         return true;
+    }
+
+    public String getTotalPriceOfSelectedProducts() {
+        try {
+            List<WebElement> pricesOfSelectedProductsProducts = driver.findElements(pricesOfSelectedProductsLocator);
+            for (int i = 1; i <= pricesOfSelectedProductsProducts.size(); i++) {
+                By elements = By.xpath("(//button[.=\"Remove\"] //preceding-sibling::div[@class='inventory_item_price'])[" + i + "]");
+                String fullText = Utility.getText(driver, elements);
+                totalPrice += Float.parseFloat(fullText.replace("$", ""));
+            }
+            LogsUtils.info("Total price " + totalPrice);
+            return String.valueOf(totalPrice);
+        } catch (Exception e) {
+            LogsUtils.error(e.getMessage());
+            return "0";
+        }
     }
 
 
