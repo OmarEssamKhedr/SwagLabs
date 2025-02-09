@@ -2,13 +2,9 @@ package Tests;
 
 import Listeners.IInvokedMethodListenerClass;
 import Listeners.ITestResultListenerClass;
-import Pages.P01_LoginPage;
-import Pages.P02_LandingPage;
-import Pages.P03_CartPage;
-import Pages.P04_CheckoutPage;
+import Pages.*;
 import Utilities.DataUtils;
 import Utilities.LogsUtils;
-import Utilities.Utility;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -22,8 +18,7 @@ import static DriverFactory.DriverFactory.*;
 import static Utilities.DataUtils.getPropertyValue;
 
 @Listeners({IInvokedMethodListenerClass.class, ITestResultListenerClass.class})
-
-public class TC04_CheckoutTest {
+public class TC06_FinishingOrderTest {
 
     private final String username1 = DataUtils.getJsonData("validlogin", "normalUsername");
     private final String password = DataUtils.getJsonData("validlogin", "password");
@@ -42,7 +37,7 @@ public class TC04_CheckoutTest {
     }
 
     @Test
-    public void checkoutStepOneTC() throws IOException {
+    public void finishOrderTC() {
         new P01_LoginPage(getDriver())
                 .enterUsername(username1)
                 .enterPassword(password)
@@ -56,7 +51,9 @@ public class TC04_CheckoutTest {
                 .fillingInfoForm(firstName, lastName, zipCode)
                 .clickOnContinueButton();
         LogsUtils.info(firstName + " " + lastName + " " + zipCode);
-        Assert.assertTrue(Utility.verifyURL(getDriver(), getPropertyValue("environment", "Checkout2_URL")));
+        new P05_OverviewPage(getDriver()).clickingOnFinishButton();
+
+        Assert.assertTrue(new P06_FinishingOrderPage(getDriver()).checkVisibilityOfThanksMessage());
     }
 
 

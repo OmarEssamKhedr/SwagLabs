@@ -1,10 +1,17 @@
 package Listeners;
 
 import Utilities.LogsUtils;
+import Utilities.Utility;
+import io.qameta.allure.Allure;
 import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class IInvokedMethodListenerClass implements IInvokedMethodListener {
     public void beforeInvocation(
@@ -14,8 +21,14 @@ public class IInvokedMethodListenerClass implements IInvokedMethodListener {
 
     public void afterInvocation(
             IInvokedMethod method, ITestResult testResult, ITestContext context) {
-        if (testResult.getStatus()==ITestResult.FAILURE)
-        {
+
+        File logFile = Utility.getLastestFile(LogsUtils.Logs_path);
+        try {
+            Allure.addAttachment("logs.log", Files.readString(Path.of(logFile.getPath())));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        if (testResult.getStatus() == ITestResult.FAILURE) {
             LogsUtils.info("Test Case " + testResult.getName() + " failed");
             //Utility.takeScreenShot(getDriver(),testResult.getName());
         }

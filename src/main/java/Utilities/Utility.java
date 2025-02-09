@@ -8,10 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.time.Duration;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class Utility {
     private static final String SCREENSHOTS_PATH = "test-outputs/Screenshots/";
@@ -74,6 +73,18 @@ public class Utility {
             return false;
         }
         return true;
+    }
+
+    public static File getLastestFile(String folderPath) {
+        File folder = new File(folderPath);
+        File[] files = folder.listFiles();
+        assert files != null;
+        if (files.length == 0)
+            return null;
+
+        Arrays.sort(files, Comparator.comparingLong(File::lastModified).reversed());
+
+        return files[0];
     }
 
     /*public static void  takeScreenShot(WebDriver driver , String screenshotName){
