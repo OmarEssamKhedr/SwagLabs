@@ -14,6 +14,7 @@ import java.time.Duration;
 
 import static DriverFactory.DriverFactory.*;
 import static Utilities.DataUtils.getPropertyValue;
+import static Utilities.Utility.verifyURL;
 
 public class TC02_LandingTest {
     private final String normalUsername = DataUtils.getJsonData("validLogin", "normalUsername");
@@ -60,7 +61,7 @@ public class TC02_LandingTest {
                 .enterPassword(password)
                 .ClickOnLoginButton()
                 .clickOnCartIcon();
-        Assert.assertTrue(new P02_LandingPage(getDriver()).verifyCartPageURL(DataUtils.getPropertyValue("environment", "Cart_URL")));
+        Assert.assertTrue(verifyURL(getDriver(), (DataUtils.getPropertyValue("environment", "Cart_URL"))));
 
     }
 

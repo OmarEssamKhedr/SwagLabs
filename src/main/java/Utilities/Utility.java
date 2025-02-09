@@ -66,6 +66,16 @@ public class Utility {
         return generatedNumbers;
     }
 
+    public static boolean verifyURL(WebDriver driver, String expectedURL) {
+        try {
+            generalWait(driver).until(ExpectedConditions.urlToBe(expectedURL));
+
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
     /*public static void  takeScreenShot(WebDriver driver , String screenshotName){
         try {
 

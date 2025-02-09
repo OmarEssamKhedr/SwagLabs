@@ -5,12 +5,9 @@ import Utilities.Utility;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 import java.util.Set;
-
-import static Utilities.Utility.generalWait;
 
 public class P02_LandingPage {
     static float totalPrice = 0;
@@ -79,19 +76,6 @@ public class P02_LandingPage {
         Utility.ClickOnElement(driver, cartIcon);
         return new
                 P03_CartPage(driver);
-    }
-
-    public boolean verifyCartPageURL(String expectedURL) {
-        try {
-            generalWait(driver).until(ExpectedConditions.urlToBe(expectedURL));
-
-            // LogsUtils.error("expected URL " + expectedURL);
-            //LogsUtils.error("get Current Url " + driver.getCurrentUrl());
-        } catch (Exception e) {
-            //LogsUtils.error(e.getMessage());
-            return false;
-        }
-        return true;
     }
 
     public String getTotalPriceOfSelectedProducts() {

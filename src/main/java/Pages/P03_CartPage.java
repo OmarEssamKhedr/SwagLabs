@@ -13,6 +13,7 @@ public class P03_CartPage {
     static float totalPrice = 0;
     private final WebDriver driver;
     private final By pricesOfSelectedProductsLocator = By.xpath("(//button[.=\"Remove\"] //preceding-sibling::div[@class='inventory_item_price'])");
+    private final By checkoutButton = By.xpath("/html/body/div/div/div/div[2]/div/div[2]/button[2]");
 
     public P03_CartPage(WebDriver driver) {
         this.driver = driver;
@@ -39,5 +40,10 @@ public class P03_CartPage {
 
     public boolean comparingPrices(String price) {
         return getTotalPrice().equals(price);
+    }
+
+    public P04_CheckoutPage clickOnCheckoutButton() {
+        Utility.ClickOnElement(driver, checkoutButton);
+        return new P04_CheckoutPage(driver);
     }
 }
