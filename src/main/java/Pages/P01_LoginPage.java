@@ -5,9 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class P01_LoginPage {
-    private final By username = By.xpath("/html/body/div/div/div[2]/div[1]/div/div/form/div[1]/input");
-    private final By password = By.xpath("/html/body/div/div/div[2]/div[1]/div/div/form/div[2]/input");
-    private final By LoginButton = By.xpath("/html/body/div/div/div[2]/div[1]/div/div/form/input");
+    private final By username = By.id("user-name");
+    private final By password = By.id("password");
+    private final By loginButton = By.id("login-button");
     private final WebDriver driver;
 
     public P01_LoginPage(WebDriver driver) {
@@ -25,7 +25,7 @@ public class P01_LoginPage {
     }
 
     public P02_LandingPage ClickOnLoginButton() {
-        Utility.ClickOnElement(driver, LoginButton);
+        Utility.ClickOnElement(driver, loginButton);
         return new P02_LandingPage(driver);
     }
 

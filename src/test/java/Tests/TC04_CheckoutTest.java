@@ -9,6 +9,7 @@ import Pages.P04_CheckoutPage;
 import Utilities.DataUtils;
 import Utilities.LogsUtils;
 import Utilities.Utility;
+import com.github.javafaker.Faker;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -27,9 +28,9 @@ public class TC04_CheckoutTest {
 
     private final String username1 = DataUtils.getJsonData("validlogin", "normalUsername");
     private final String password = DataUtils.getJsonData("validlogin", "password");
-    private final String firstName = DataUtils.getJsonData("information", "fName");
-    private final String lastName = DataUtils.getJsonData("information", "lName");
-    private final String zipCode = DataUtils.getJsonData("information", "ZIP") + " - " + "Time";
+    private final String firstName = DataUtils.getJsonData("information", "fName") + "-" + Utility.getTimeStamp();
+    private final String lastName = DataUtils.getJsonData("information", "lName") + "-" + Utility.getTimeStamp();
+    private final String zipCode = new Faker().number().digits(5);
 
 
     @BeforeMethod

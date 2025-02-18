@@ -36,14 +36,14 @@ public class TC03_CartTest {
 
     @Test
     public void comparingPricesTC() {
-        String Totalprice = new P01_LoginPage(getDriver())
+        String totalPrice = new P01_LoginPage(getDriver())
                 .enterUsername(Username1)
                 .enterPassword(password)
                 .ClickOnLoginButton()
                 .addRandomProducts(2, 6)
                 .getTotalPriceOfSelectedProducts();
         new P02_LandingPage(getDriver()).clickOnCartIcon();
-        Assert.assertTrue(new P03_CartPage(getDriver()).comparingPrices(Totalprice));
+        Assert.assertTrue(new P03_CartPage(getDriver()).comparingPrices(totalPrice));
     }
 
 

@@ -13,7 +13,7 @@ public class P03_CartPage {
     static float totalPrice = 0;
     private final WebDriver driver;
     private final By pricesOfSelectedProductsLocator = By.xpath("(//button[.=\"Remove\"] //preceding-sibling::div[@class='inventory_item_price'])");
-    private final By checkoutButton = By.xpath("/html/body/div/div/div/div[2]/div/div[2]/button[2]");
+    private final By checkoutButton = By.id("checkout");
 
     public P03_CartPage(WebDriver driver) {
         this.driver = driver;

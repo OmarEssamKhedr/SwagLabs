@@ -1,14 +1,18 @@
 package Utilities;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import com.assertthat.selenium_shutterbug.core.Capture;
+import com.assertthat.selenium_shutterbug.core.Shutterbug;
+import io.qameta.allure.Allure;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.*;
 
@@ -75,7 +79,7 @@ public class Utility {
         return true;
     }
 
-    public static File getLastestFile(String folderPath) {
+    public static File getLatestFile(String folderPath) {
         File folder = new File(folderPath);
         File[] files = folder.listFiles();
         assert files != null;
@@ -87,21 +91,36 @@ public class Utility {
         return files[0];
     }
 
-    /*public static void  takeScreenShot(WebDriver driver , String screenshotName){
-        try {
+    public static String getTimeStamp() {
+        return new SimpleDateFormat("yyyy-MM-dd-hh-mm-ssa").format(new Date());
+    }
 
+
+    public static void takeScreenShot(WebDriver driver, String screenshotName) {
+        try {
             // Capture screenshot using TakesScreenshot
             File screenshotSrc = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
-            //Save screenshot to a file if needed
-            File screenshotFile = new File(SCREENSHOTS_PATH + screenshotName + ".png");
+            // Save screenshot to a file if needed
+            File screenshotFile = new File(SCREENSHOTS_PATH + screenshotName + "-" + getTimeStamp() + ".png");
             FileUtils.copyFile(screenshotSrc, screenshotFile);
 
-            //Attach the screenshot to allure
-            Allure.addAttachment(screenshotName , Files.newInputStream(Path.of(screenshotFile.getPath())));
+            // Attach the screenshot to Allure
+            Allure.addAttachment(screenshotName, Files.newInputStream(Path.of(screenshotFile.getPath())));
         } catch (Exception e) {
-            e.printStackTrace();
+            LogsUtils.error(e.getMessage());
         }
-    }*/
+    }
+
+    public static void takeFullScreenshot(WebDriver driver, By locator) {
+        try {
+            Shutterbug.shootPage(driver, Capture.FULL_SCROLL)
+                    .highlight(findWebElement(driver, locator))
+                    .save(SCREENSHOTS_PATH);
+        } catch (Exception e) {
+            LogsUtils.error(e.getMessage());
+        }
+
+    }
 
 }
