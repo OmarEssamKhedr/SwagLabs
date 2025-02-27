@@ -39,7 +39,9 @@ public class TC01_LoginTest {
 
     @BeforeMethod
     public void setup() throws IOException {
-        setupDriver(getPropertyValue("environment", "Browser"));
+        String browser = System.getProperty("browser") != null ? System.getProperty("browser") : getPropertyValue("environment", "Browser");
+        LogsUtils.info(System.getProperty("browser"));
+        setupDriver(browser);
         LogsUtils.info("Chrome driver is opened");
         getDriver().get(getPropertyValue("environment", "Base_URL"));
         LogsUtils.info("Page is redirected to the url");

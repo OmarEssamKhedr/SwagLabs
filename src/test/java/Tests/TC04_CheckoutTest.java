@@ -43,6 +43,24 @@ public class TC04_CheckoutTest {
     }
 
     @Test
+    public void FailTC() throws IOException {
+        new P01_LoginPage(getDriver())
+                .enterUsername("Fail Test for screen shot")
+                .enterPassword(password)
+                .ClickOnLoginButton();
+        new P02_LandingPage(getDriver())
+                .addRandomProducts(2, 6)
+                .clickOnCartIcon();
+        new P03_CartPage(getDriver())
+                .clickOnCheckoutButton();
+        new P04_CheckoutPage(getDriver())
+                .fillingInfoForm(firstName, lastName, zipCode)
+                .clickOnContinueButton();
+        LogsUtils.info(firstName + " " + lastName + " " + zipCode);
+        Assert.assertTrue(Utility.verifyURL(getDriver(), getPropertyValue("environment", "Checkout2_URL")));
+    }
+
+    @Test
     public void checkoutStepOneTC() throws IOException {
         new P01_LoginPage(getDriver())
                 .enterUsername(username1)
